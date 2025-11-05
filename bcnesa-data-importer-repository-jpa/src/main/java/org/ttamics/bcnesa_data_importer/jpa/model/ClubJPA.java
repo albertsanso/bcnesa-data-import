@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderColumn;
@@ -24,7 +25,13 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name="Club", schema="bcnesadata")
+@Table(
+        name="Club",
+        schema="bcnesadata",
+        indexes = {
+                @Index(name="idx_name", columnList="name", unique=true)
+        }
+)
 public class ClubJPA {
 
     @Id

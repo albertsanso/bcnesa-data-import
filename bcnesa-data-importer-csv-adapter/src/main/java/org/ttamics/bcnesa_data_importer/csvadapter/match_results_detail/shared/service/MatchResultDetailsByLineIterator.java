@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Queue;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -98,7 +99,7 @@ public class MatchResultDetailsByLineIterator implements Iterator<MatchResultsDe
     }
 
     private void processCompetitionTypeFolder(CompetitionTypeFolderInfo competitionTypeFolderInfo, SeasonFolderInfo seasonFolderInfo) {
-        csvRepositoryFinderService.findCompetitionFoldersFrom(competitionTypeFolderInfo.folder()).ifPresent(competitionFolderInfos -> {
+        csvRepositoryFinderService.findCompetitionFoldersFrom(competitionTypeFolderInfo.folder(), competitionTypeFolderInfo.competitionType()).ifPresent(competitionFolderInfos -> {
             competitionFolderInfos.forEach(competitionFolderInfo -> processCompetitionFolder(competitionFolderInfo, seasonFolderInfo, competitionTypeFolderInfo));
         });
     }
@@ -163,7 +164,7 @@ public class MatchResultDetailsByLineIterator implements Iterator<MatchResultsDe
     public MatchResultsDetailCsvFileRowInfo next() {
         if (!hasNext()) throw new NoSuchElementException();
         String[] lineToReturn = nextLine;
-        MatchResultsDetailCsvFileRowInfo rowInfoToReturn = new MatchResultsDetailCsvFileRowInfo(currentInfo, lineToReturn);
+        MatchResultsDetailCsvFileRowInfo rowInfoToReturn = new MatchResultsDetailCsvFileRowInfo(currentInfo, lineToReturn, UUID.randomUUID());
         advanceReader();
         return rowInfoToReturn;
     }

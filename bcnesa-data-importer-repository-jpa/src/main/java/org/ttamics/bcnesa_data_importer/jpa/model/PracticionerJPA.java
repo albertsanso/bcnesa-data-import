@@ -3,6 +3,7 @@ package org.ttamics.bcnesa_data_importer.jpa.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,13 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name="Practicioner", schema="bcnesadata")
+@Table(
+        name="Practicioner",
+        schema="bcnesadata",
+        indexes = {
+             @Index(name="idx_full_name", columnList="full_name")
+        }
+)
 public class PracticionerJPA {
     @Id
     @Column(columnDefinition = "BINARY(16)", updatable = false, nullable = false)

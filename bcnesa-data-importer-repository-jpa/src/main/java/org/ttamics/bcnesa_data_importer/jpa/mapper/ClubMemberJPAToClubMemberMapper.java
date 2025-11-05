@@ -23,7 +23,7 @@ public class ClubMemberJPAToClubMemberMapper implements Function<ClubMemberJPA, 
 
     @Override
     public ClubMember apply(ClubMemberJPA clubMemberJPA) {
-        ClubMember clubMember= ClubMember.createExisting(
+        ClubMember clubMember = ClubMember.createExisting(
                 clubMemberJPA.getId(),
                 clubJPAToClubMapper.apply(clubMemberJPA.getClub()),
                 practicionerJPAToPracticionerMapper.apply(clubMemberJPA.getPracticioner())

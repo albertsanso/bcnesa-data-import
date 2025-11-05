@@ -18,7 +18,7 @@ import java.util.Optional;
 @Component
 public class CsvRepositoryFinderService {
 
-    public Optional<List<CompetitionFolderInfo>> findCompetitionFoldersFrom(String baseFolder) {
+    public Optional<List<CompetitionFolderInfo>> findCompetitionFoldersFrom(String baseFolder, CompetitionType competitionType) {
         return Optional.of(Arrays.stream(Competition.values())
                 .map(competition ->
                         new CompetitionFolderInfo(
@@ -26,6 +26,7 @@ public class CsvRepositoryFinderService {
                                 buildCompetitionFolder(competition, baseFolder).toString()
                         )
                 )
+                .filter(competitionFolderInfo -> competitionFolderInfo.competition().getCompetitionType() == competitionType)
                 .filter(competitionFolderInfo -> Files.isDirectory(Path.of(competitionFolderInfo.folder())))
                 .toList()
         ).filter(l -> !l.isEmpty());

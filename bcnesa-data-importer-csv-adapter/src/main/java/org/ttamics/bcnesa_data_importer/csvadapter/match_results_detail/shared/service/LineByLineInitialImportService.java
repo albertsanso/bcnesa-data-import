@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseInitialImportService {
+public class LineByLineInitialImportService {
     protected final MatchResultDetailsByLineIterator matchResultDetailsByLineIterator;
 
-    public BaseInitialImportService(MatchResultDetailsByLineIterator matchResultDetailsByLineIterator) {
+    public LineByLineInitialImportService(MatchResultDetailsByLineIterator matchResultDetailsByLineIterator) {
         this.matchResultDetailsByLineIterator = matchResultDetailsByLineIterator;
     }
 

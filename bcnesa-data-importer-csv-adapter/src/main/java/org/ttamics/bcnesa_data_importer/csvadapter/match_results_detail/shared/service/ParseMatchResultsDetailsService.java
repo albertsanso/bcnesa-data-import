@@ -5,15 +5,11 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.ttamics.bcnesa_data_importer.core.model.Club;
-import org.ttamics.bcnesa_data_importer.core.model.SeasonPlayer;
-import org.ttamics.bcnesa_data_importer.core.model.Team;
 import org.ttamics.bcnesa_data_importer.core.repository.ClubRepository;
 import org.ttamics.bcnesa_data_importer.core.repository.SeasonPlayerRepository;
-import org.ttamics.bcnesa_data_importer.core.repository.TeamRepository;
+import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club.service.ClubNameGrouppingService;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.model.MatchResultsDetailRowInfo;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.model.PlayerCsvInfo;
-import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club.service.ClubNameGrouppingService;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -27,15 +23,13 @@ public class ParseMatchResultsDetailsService {
 
     private static final Pattern JORNADA_AND_GRUP_FILENAME_PATTERN = Pattern.compile("jornada(\\d+)-g(\\d+)\\.csv");
 
-    private final TeamRepository teamRepository;
     private final ClubRepository clubRepository;
     private final SeasonPlayerRepository seasonPlayerRepository;
     private final CsvRepositoryFinderService csvRepositoryFinderService;
     private final ClubNameGrouppingService clubNameGrouppingService;
 
     @Autowired
-    public ParseMatchResultsDetailsService(TeamRepository teamRepository, ClubRepository clubRepository, SeasonPlayerRepository seasonPlayerRepository, CsvRepositoryFinderService csvRepositoryFinderService, ClubNameGrouppingService clubNameGrouppingService) {
-        this.teamRepository = teamRepository;
+    public ParseMatchResultsDetailsService(ClubRepository clubRepository, SeasonPlayerRepository seasonPlayerRepository, CsvRepositoryFinderService csvRepositoryFinderService, ClubNameGrouppingService clubNameGrouppingService) {
         this.clubRepository = clubRepository;
         this.seasonPlayerRepository = seasonPlayerRepository;
         this.csvRepositoryFinderService = csvRepositoryFinderService;

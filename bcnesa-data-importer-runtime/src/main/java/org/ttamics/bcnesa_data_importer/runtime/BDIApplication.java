@@ -12,6 +12,8 @@ import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club_mem
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.model.MatchResultsDetailCsvFileRowInfo;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club.service.ClubInitialImportService;
 
+import java.io.IOException;
+
 @SpringBootApplication(scanBasePackages = {
         "org.ttamics.bcnesa_data_importer.core",
         "org.ttamics.bcnesa_data_importer.csvadapter",
@@ -34,21 +36,31 @@ public class BDIApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String baseFolder = "C:\\git\\bcnesa-data-csv\\resources\\matches-results-details\\csv";
+        //String baseFolder = "C:\\git\\folder-test\\test-2";
 
-        clubInitialImportService.processClubNamesForAllSeasons(baseFolder);
+        //clubInitialImportService.processClubNamesForAllSeasons(baseFolder);
+        //playerAndResultsInitialImportService.processForSeason(baseFolder, "2024-2025");
 
-        playerAndResultsInitialImportService.processClubMembersForSeason(baseFolder, "2024-2025");
-        //clubMemberInitialImportService.processClubMembersForAllSeasons(baseFolder);
+        //String baseFolder = "D:\\data\\resources\\test-1";
+        processMatchesAndResultsInfoForFolderAndBySeason(baseFolder, "2019-2020");
+
+        System.out.println("FINISH.");
     }
 
-    private static void processRowInfo(MatchResultsDetailCsvFileRowInfo rowInfo) {
-        String season = rowInfo.fileInfo().season();
-        CompetitionType competitionType = rowInfo.fileInfo().competitionType();
-        Competition competition = rowInfo.fileInfo().competition();
-        String jornada = rowInfo.fileInfo().jornada();
-        String grup = rowInfo.fileInfo().group();
-        String[] rowStringData = rowInfo.rowInfo();
-        System.out.println();
+    private void processClubAndMembersInfoForFolderAndAllSeasons(String baseFolder) throws IOException {
+        playerAndResultsInitialImportService.processForAllSeasons(baseFolder);
+    }
+
+    private void processClubAndMembersInfoForFolderAndBySeason(String baseFolder, String season) throws IOException {
+        playerAndResultsInitialImportService.processForSeason(baseFolder, season);
+    }
+
+    private void processMatchesAndResultsInfoForFolderAndAllSeasons(String baseFolder) throws IOException {
+        playerAndResultsInitialImportService.processForAllSeasons(baseFolder);
+    }
+
+    private void processMatchesAndResultsInfoForFolderAndBySeason(String baseFolder, String season) throws IOException {
+        playerAndResultsInitialImportService.processForSeason(baseFolder, season);
     }
 }
 

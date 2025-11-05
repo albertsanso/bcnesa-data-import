@@ -6,7 +6,7 @@ import org.ttamics.bcnesa_data_importer.core.model.Club;
 import org.ttamics.bcnesa_data_importer.core.repository.ClubRepository;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club.model.ClubNameAndYearInfo;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.model.MatchResultsDetailCsvFileRowInfo;
-import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.service.BaseInitialImportService;
+import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.service.LineByLineInitialImportService;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.service.CsvFileRowInfoExtractor;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.service.MatchResultDetailsByLineIterator;
 
@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Component
-public class ClubInitialImportService extends BaseInitialImportService {
+public class ClubInitialImportService extends LineByLineInitialImportService {
 
     private final ClubRepository clubRepository;
 

@@ -8,7 +8,7 @@ import java.util.*;
 
 @Component
 public class ClubNameGrouppingService {
-    private static final double MERGE_THRESHOLD = 0.7;
+    private static final double MERGE_THRESHOLD = 0.8;
 
     // ---------------- CORE GROUPING LOGIC ----------------
     public static Map<String, List<String>> groupByCommonRoot(List<ClubNameAndYearInfo> items) {
@@ -52,8 +52,9 @@ public class ClubNameGrouppingService {
                         .toList());
             }
         });
-        return outputClubNamesAndYears;
 
+        //return mergedGroupsMap;
+        return outputClubNamesAndYears;
     }
 
     // ---------------- ADAPTIVE THRESHOLD ----------------

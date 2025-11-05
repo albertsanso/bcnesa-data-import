@@ -16,7 +16,14 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name="ClubMember", schema="bcnesa-data")
+@Table(
+        name="ClubMember",
+        schema="bcnesa-data",
+        indexes = {
+                @Index(name="idx_club_id", columnList="club_id"),
+                @Index(name="idx_practicioner_id", columnList="practicioner_id")
+        }
+)
 public class ClubMemberJPA {
 
     @Id
