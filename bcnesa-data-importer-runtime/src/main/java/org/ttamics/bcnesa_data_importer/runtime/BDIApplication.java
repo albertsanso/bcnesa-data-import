@@ -6,11 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.ttamics.bcnesa_data_importer.core.model.Competition;
-import org.ttamics.bcnesa_data_importer.core.model.CompetitionType;
-import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club_member.service.PlayerAndResultsInitialImportService;
-import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.shared.model.MatchResultsDetailCsvFileRowInfo;
 import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club.service.ClubInitialImportService;
+import org.ttamics.bcnesa_data_importer.csvadapter.match_results_detail.club_member.service.PlayerAndResultsInitialImportService;
 
 import java.io.IOException;
 
@@ -38,7 +35,7 @@ public class BDIApplication implements CommandLineRunner {
         String baseFolder = "C:\\git\\bcnesa-data-csv\\resources\\matches-results-details\\csv";
         //String baseFolder = "C:\\git\\folder-test\\test-2";
 
-        //clubInitialImportService.processClubNamesForAllSeasons(baseFolder);
+        clubInitialImportService.processClubNamesForAllSeasons(baseFolder);
         //playerAndResultsInitialImportService.processForSeason(baseFolder, "2024-2025");
 
         //String baseFolder = "D:\\data\\resources\\test-1";

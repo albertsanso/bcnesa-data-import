@@ -26,7 +26,7 @@ import java.util.UUID;
 @Entity
 @Table(
         name="PlayersSingleMatch",
-        schema="bcnesa-data",
+        schema="bcnesadata",
         indexes = {
                 @Index(name="idx_player_result_abc_id", columnList="player_result_abc_id"),
                 @Index(name="idx_player_result_xyz_id", columnList="player_result_xyz_id"),

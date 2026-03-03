@@ -18,7 +18,7 @@ import java.util.UUID;
 @Entity
 @Table(
         name="ClubMember",
-        schema="bcnesa-data",
+        schema="bcnesadata",
         indexes = {
                 @Index(name="idx_club_id", columnList="club_id"),
                 @Index(name="idx_practicioner_id", columnList="practicioner_id")

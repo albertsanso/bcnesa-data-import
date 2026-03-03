@@ -106,7 +106,8 @@ public class PlayerAndResultsInitialImportService extends LineByLineInitialImpor
                 String fullTeamABCId = seasonRange + competitionType + competition + jornada + grupo + teamNameABC; // NOT REALLY USED
                 String fullTeamXYZId = seasonRange + competitionType + competition + jornada + grupo + teamNameXYZ; // NOT REALLY USED
 
-                String gameId = rowInfo.acbPlayer().playerLetter()+"-"+rowInfo.xyzPlayer().playerLetter();
+                //String gameId = rowInfo.acbPlayer().playerLetter()+"-"+rowInfo.xyzPlayer().playerLetter();
+                String gameId = seasonRange+"-"+competitionType+"-"+competition+"-"+jornada+"-"+grupo+"-"+rowInfo.acbPlayer().playerLicense()+"-"+rowInfo.xyzPlayer().playerLicense();
 
                 MatchInfoKey matchInfoKey = new MatchInfoKey(
                         seasonRange,
